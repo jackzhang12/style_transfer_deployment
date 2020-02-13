@@ -1,4 +1,4 @@
-input numpy as np
+import numpy as np 
 import os
 from flask import Flask, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
@@ -7,12 +7,16 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def main_page();
+def main_page():
     if request.method == 'POST':
-        file = request.files['file']
-        filename = secure_filename(file.filename)
+        fileM = request.files['output']
+        fileS = request.files['output2']
+        filename = secure_filename(fileM.filename)
+        filename2 = secure_filename(fileS.filename)
         file.save(os.path.join('uploads', filename))
-        return redirect(url_for('results.html', filename=filename))
+        file.save(os.path.join('uploads', filename))
+
+        return redirect(url_for('prediction', filename=filename,filename=filename2 ))
     return render_template('index.html')
 
 
@@ -22,3 +26,8 @@ def hello():
 
 if __name__ == "__main__":
 	app.run()
+
+@app.route('/prediction/<filename>')
+def prediction(filename, filename2):
+    
+    return render_template('results.html')
