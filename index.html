@@ -47,12 +47,22 @@
     };
 </script>
 
-<button onclick="myFunction()" style="position: relative; top: -950px; left: 720px;">MERGE</button>
+
+<form onclick="myFunction()" action="results.html" target="_blank" style="position: relative; top: -950px; left: 720px;">
+    <input type="submit" value="MERGE">
+</form>
+
 <p id="demo" style="position: relative; top: -950px; left:675px; color: red;"></p>
 <script>
     function myFunction() {
         document.getElementById("demo").innerHTML = "Please Choose 2 Images";
     }
 </script>
+
+<div class="slidecontainer">
+    <input type="range" min="1" max="100" value="1" class="slider" id="myRange2">
+    <p>Value: <span id="demo2"></span></p>
+</div>
+
 
 </html> 
