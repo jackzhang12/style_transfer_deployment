@@ -23,33 +23,20 @@
 </body>
 <h1 style="position: relative; left: 1050px; top: -91px; color: orange; font-family: Elephant">Style</h1>
 <h1 style="position: relative; left: 350px; top: -150px; color: orange; font-family: Elephant">Main</h1>
-<input name="hi" type="file" accept="image/*" onchange="loadFile(event)" style="position: relative; left: 150px; top: -150px">
-<div style="width: 500px; height: 500px; border: 1px; border: solid black; position: relative; left: 150px; top: -150px">
+
+<div style="width: 500px; height: 500px; border: 1px; border: solid black; position: relative; left: 150px; top: -150px"> <!--Main box-->
     <img id="output" style="max-height: 500px; max-width:500px;">
 </div>
 
-<script>
-    var loadFile = function (event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
-
-<input name="hiw" type="file" accept="image/*" onchange="loadFile2(event)" style="position: relative; left: 850px; top: -676.5px;">
-<div style="width: 500px; height: 500px; border: 1px; border: solid black; position: relative; left: 850px; top: -676.5px;">
+<div style="width: 500px; height: 500px; border: 1px; border: solid black; position: relative; left: 850px; top: -655px;"> <!--Style box-->
     <img id="output2" style="max-height: 500px; max-width: 500px;">
 </div>
 
-<script>
-    var loadFile2 = function (event) {
-        var output2 = document.getElementById('output2');
-        output2.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
+<form onclick="myFunction()" action="results.html" target="_blank" method="post"> <!--Form-->
+    <input type="submit" value="MERGE" style="position: relative; top: -950px; left: 720px;">
+    <input name="output" type="file" accept="image/*" onchange="loadFile(event)" style="position: relative; left: 81.5px; top: -1181px"> <!--Main-->
+    <input name="output2" type="file" accept="image/*" onchange="loadFile2(event)" style="position: relative; left: 525px; top: -1181px;"> <!--Style-->
 
-
-<form onclick="myFunction()" action="results.html" target="_blank" style="position: relative; top: -950px; left: 720px;">
-    <input type="submit" value="MERGE">
 </form>
 
 <p id="demo" style="position: relative; top: -950px; left:675px; color: red;"></p>
@@ -57,10 +44,20 @@
     function myFunction() {
         document.getElementById("demo").innerHTML = "Please Choose 2 Images";
     }
+
+        var loadFile2 = function (event) {
+        var output2 = document.getElementById('output2');
+        output2.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+        var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>
 
 <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="1" class="slider" id="myRange2">
+    <input name="range" type="range" min="1" max="100" value="1" class="slider" id="myRange2">
     <p>Value: <span id="demo2"></span></p>
 </div>
 
